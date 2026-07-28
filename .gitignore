@@ -1,0 +1,40 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# User-specific files
+*.user
+*.suo
+
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# App settings with secrets
+appsettings.json
+appsettings.Development.json
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+
+# Coverage
+coverage/
+
+# npm logs
+npm-debug.log*
+yarn-error.log*
+work/
+dist/
+*.tsbuildinfo
