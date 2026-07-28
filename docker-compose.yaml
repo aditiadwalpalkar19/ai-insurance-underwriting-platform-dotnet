@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: insurance-db
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: insurance
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./Verity.Insurance.Api
+
+    container_name: insurance-api
+
+    ports:
+      - "5001:8080"
+
+    depends_on:
+      - postgres
+
+    environment:
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=insurance;Username=postgres;Password=postgres
+
+  frontend:
+    build:
+      context: ./Verity.Insurance.Portal
+
+    container_name: insurance-portal
+
+    ports:
+      - "3000:80"
+
+    depends_on:
+      - api
+
+volumes:
+  postgres-data:
